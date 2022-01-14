@@ -1,26 +1,27 @@
 <template>
   <div>
     <div class=" text-center text-2xl my-5">Categorias: </div>
-    <div v-for="(e, k) in categories" :key="k" class="">{{e.name}}</div>
+    <div v-for="(category, k) in categories" :key="k" class="cursor-pointer select-none ml-8 my-5 text-lg" @click="change(category)">{{category.name}}</div>
   </div>
 </template>
 <script>
 export default {
-  name: "Home",
+  name: "Sidebar",
   props: {
-    categories: [],
+    name: { type: String },
+    categories: { type: Array },
+  },
+  
+  data() {
+    return {
+    };
   },
   mounted() {
-    this.getCategories();
   },
   methods: {
-    getCategories() {
-      this.axios
-        .get("http://sva.talana.com:8000/api/product-category/")
-        .then((response) => {
-          this.categories = response.data;
-        });
-    },
+    change(category){
+      this.$emit('changeCategory',category.id, category.name)
+    }
   },
 };
 </script>
