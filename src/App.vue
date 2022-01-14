@@ -1,28 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="custom-grid w-full border border-black">
+    <div class=" ">logo</div>
+    <div class=" border border-black">nav</div>
+    <Sidebar />
+    <Home />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from "./components/Home.vue";
+import Sidebar from "./components/Sidebar.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Home,
+    Sidebar,
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .custom-grid{
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 10px;
+    justify-content: start;
+  }
 </style>
